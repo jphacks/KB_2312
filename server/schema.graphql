@@ -1,0 +1,40 @@
+schema {
+  query: QueryRoot
+  mutation: Mutation
+}
+
+type QueryRoot {
+  page(id: Int!): Page
+  pageByTitle(title: String!): Page
+}
+
+type Page {
+  slug: String!
+  bodyHtml: String!
+  revisions: [PageRevision!]!
+  createTime: String!
+  updateTime: String!
+  }
+
+type PageRevision {
+  id: Int!
+  body: String!
+  author: String!
+  createTime: String!
+ }
+
+type Mutation {
+  createPage(input: CreatePageInput!): Page!
+  updatePage(input: UpdatePageBodyInput!): Page!
+}
+
+input CreatePageInput {
+  title: String!
+  source: String!
+}
+
+input UpdatePageBodyInput {
+  id: Int!
+  title: String
+  source: String
+}
