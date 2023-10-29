@@ -1,12 +1,12 @@
 name: super-linter
 on: 
   push:
-    branches-ignore: [develop, main]
-
+    branches-ignore: [main, develop]
+  workflow_dispatch:
 
 jobs:
   linter:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     steps:
     ## exmpansion
       - name: Checkout
